@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+</head>
+<style>
+  .active{
+    background:#414FE7;
+    color:#fff
+  }
+    :root{
+      --bg: #0b0c0f; /* used for dark gradient accents */
+      --brand: #2563eb; /* indigo-600 */
+      --brand-2: #4f46e5; /* indigo-600/700 mix */
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --ring: rgba(37, 99, 235, .35);
+      --card: #ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:#f8fafc;
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:1rem}
+    .topbar{background:linear-gradient(90deg, var(--brand), var(--brand-2));color:#fff;font-size:.9rem}
+    .topbar .container{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem}
+
+    header.site-header{position:sticky;top:0;z-index:50;background:#ffffffcc;backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #e2e8f0}
+    .nav{display:flex;align-items:center;gap:1rem;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.25rem}
+    .brand .logo{width:32px;height:32px;border-radius:10px;background:conic-gradient(from 180deg, var(--brand), var(--brand-2));box-shadow:0 8px 24px rgba(79,70,229,.35)}
+
+    .search{flex:1;display:flex;align-items:center;gap:.5rem}
+    .search input{width:100
+  }
+</style>
+<body>
+
+
+          <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Main">
+        <a class="brand" href="{% url 'home' %}" aria-label="ShopMate Home">
+          <div class="logo" aria-hidden="true"></div>
+          <span>ShopMate</span>
+        </a>
+
+        <div class="search" role="search">
+          <input type="search" placeholder="Search for products, brands and more…" aria-label="Search products"/>
+        </div>
+
+        <div class="actions">
+          <a href="/sign-up/">
+            <button class="icon-btn" aria-label="Account">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="text">Sign In</span>
+          </button>
+          </a>
+          <button class="icon-btn" aria-label="Cart" id="cartBtn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 12.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="text">Cart (<span id="cartCount">0</span>)</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="primary-nav" role="navigation" aria-label="Categories">
+        {% comment %} {{request.path}} {% endcomment %}
+        {% comment %} <a href="/about-us">About Us</a> {% endcomment %}
+        {% url 'about-us' as url %}
+        <a class="{% if request.path == '/about-us/' %} active {% endif %}" href="{{url}}">About Us</a>
+        {% comment %} <a href="/new-featured-products">New Arrivals</a> {% endcomment %}
+        {% url 'featured-products' as url %}
+        <a class="{% if request.path == '/featured-products/' %} active {% endif %}" href="{{url}}">New Arrivals</a>
+        {% url 'best-sller' as url %}
+        <a class="
+        {% if request.path == '/best-seller' %}
+          active
+        {% endif %}
+          " href="{{url}}">Best Sellers</a>
+        
+        {% comment %} <a href="/todays-offer">Offers</a> {% endcomment %}
+        {% url 'todays-offer' as url %}
+        <a class="
+        {% if request.path == '/todays-offer/' %}
+          active
+        {% endif %}
+          " href="{{url}}">Offers</a>
+          <a class="" href="#">Electronics</a>
+        <a class="" href="#">Fashion</a>
+        <a class="" href="#">Home & Living</a>
+        <a href="#">Beauty</a>
+        <a href="#">Sports</a>
+      </div>
+    </div>
+  </header>
+
+</body>
+</html>

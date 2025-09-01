@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delta IT Club</title>
+  <meta name="description" content="Delta IT Club — Learn, Build, Compete. Workshops, projects, and a thriving student community." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50' y='58' font-size='56' text-anchor='middle' fill='%23fff' font-family='Arial'>Δ</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional custom colors)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8',
+              500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e'
+            }
+          },
+          boxShadow: { glow: '0 0 0 3px rgba(14,165,233,0.25)' }
+        }
+      },
+      darkMode: 'class'
+    };
+  </script>
+  <style>
+    /* Smooth underline hover */
+    .link-underline { background-size: 0% 2px; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-position: 0 100%; transition: background-size .2s ease; }
+    .link-underline:hover { background-size: 100% 2px; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/60 dark:border-slate-800/60 backdrop-blur bg-white/70 dark:bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-2 font-bold text-xl">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">Δ</span>
+          <span>Delta IT Club</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#about" class="link-underline">About</a>
+          <a href="#events" class="link-underline">Events</a>
+          <a href="#projects" class="link-underline">Projects</a>
+          <a href="#team" class="link-underline">Team</a>
+          <a href="#contact" class="link-underline">Contact</a>
+          <a href="#join" class="ml-2 inline-flex items-center rounded-xl bg-brand-600 px-4 py-2 text-white shadow hover:bg-brand-700 focus:outline-none focus:shadow-glow">Join</a>
+        </nav>
+        <!-- Mobile menu toggles -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button id="themeToggle" aria-label="Toggle dark mode" class="rounded-xl border border-slate-200 dark:border-slate-800 p-2 hover:bg-slate-100 dark:hover:bg-slate-900">
+            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364-1.414-1.414M7.05 7.05 5.636 5.636m12.728 0-1.414 1.414M7.05 16.95l-1.414 1.414M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/></svg>
+            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.752 15.002A9 9 0 0 1 9 2.25c-.34 0-.675.02-1.006.058a.75.75 0 0 0-.323 1.366 7.5 7.5 0 0 1 9.655 9.655.75.75 0 0 0 1.366.323c.038-.331.058-.666.058-1.006 0-.227-.008-.452-.024-.676.676.343 1.317.773 1.926 1.282a.75.75 0 0 0 1.1-1.25z"/></svg>
+          </button>
+          <button id="menuBtn" class="rounded-xl border border-slate-200 dark:border-slate-800 p-2 hover:bg-slate-100 dark:hover:bg-slate-900" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-4 py-3 grid gap-2">
+        <a href="#about" class="py-2">About</a>
+        <a href="#events" class="py-2">Events</a>
+        <a href="#projects" class="py-2">Projects</a>
+        <a href="#team" class="py-2">Team</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="#join" class="py-2 font-medium text-brand-700">Join</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Learn, Build, <span class="text-brand-600">Compete</span>.</h1>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Delta IT Club is a student-run community for coding, design, and tech leadership. We host workshops, hack nights, and competitions to help you level up.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#join" class="inline-flex items-center rounded-xl bg-brand-600 px-5 py-3 text-white shadow hover:bg-brand-700 focus:outline-none focus:shadow-glow">Join the Club</a>
+            <a href="#events" class="inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-5 py-3 hover:bg-slate-50 dark:hover:bg-slate-900">See Events</a>
+          </div>
+          <div class="mt-8 flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> Active community</div>
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brand-500"></span> Weekly sessions</div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white to-brand-50 dark:from-slate-900 dark:to-slate-950 p-2">
+            <div class="h-full w-full rounded-xl bg-white dark:bg-slate-950 grid place-items-center text-center p-8">
+              <div>
+                <div class="mx-auto mb-4 h-14 w-14 grid place-items-center rounded-2xl bg-brand-600/10 text-brand-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 5.625v-.75a2.625 2.625 0 1 0-5.25 0v.75A1.125 1.125 0 0 1 7.125 6.75h-1.5A3.375 3.375 0 0 0 2.25 10.125v2.625m17.25 1.5V18a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 18v-3.75m15 0a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 14.25m15 0v-1.5A2.25 2.25 0 0 0 17.25 10.5H6.75A2.25 2.25 0 0 0 4.5 12.75v1.5"/></svg>
+                </div>
+                <h3 class="text-xl font-semibold">Kickstart Your Tech Journey</h3>
+                <p class="mt-2 text-slate-600 dark:text-slate-300">Frontend, Backend, Competitive Programming, ML/AI, Cybersecurity, UI/UX — we run tracks for all.</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 hidden sm:block">
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-3 shadow">
+              <p class="text-sm">Next Meetup: <span class="font-medium">Friday 5 PM</span> • Lab 302</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">About the Club</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">Founded by students, for students. We focus on peer-led learning, real projects, and preparing members for internships, hackathons, and national contests like ICPC.</p>
+          <ul class="mt-6 space-y-3 text-slate-700 dark:text-slate-300">
+            <li class="flex items-start gap-3"><span class="mt-1 h-5 w-5 rounded-full bg-emerald-500/15 text-emerald-700 grid place-items-center">✓</span> Weekly workshops & coding labs</li>
+            <li class="flex items-start gap-3"><span class="mt-1 h-5 w-5 rounded-full bg-brand-500/15 text-brand-700 grid place-items-center">✓</span> Project teams & mentorship</li>
+            <li class="flex items-start gap-3"><span class="mt-1 h-5 w-5 rounded-full bg-indigo-500/15 text-indigo-700 grid place-items-center">✓</span> Talks with industry mentors</li>
+          </ul>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <p class="text-sm text-slate-500">Track</p>
+            <p class="mt-1 font-semibold">Web Development</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">HTML, CSS, JS, React, Tailwind, Node — build end‑to‑end.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <p class="text-sm text-slate-500">Track</p>
+            <p class="mt-1 font-semibold">Competitive Programming</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">DSA, problem solving, contests, CP meetups.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <p class="text-sm text-slate-500">Track</p>
+            <p class="mt-1 font-semibold">UI/UX & Design</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Figma, design systems, usability testing.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <p class="text-sm text-slate-500">Track</p>
+            <p class="mt-1 font-semibold">AI / ML Basics</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Intro ML, Python, mini projects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">Upcoming Events</h2>
+        <a href="#" class="hidden sm:inline link-underline">View all</a>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Event card -->
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden">
+          <div class="h-28 bg-gradient-to-r from-brand-500 to-indigo-500"></div>
+          <div class="p-5">
+            <p class="text-sm text-slate-500">Fri • 5:00 PM</p>
+            <h3 class="mt-1 font-semibold">Intro to React + Tailwind</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Hands-on workshop. Bring your laptop!</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-xs px-2 py-1 rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">Workshop</span>
+              <button class="text-sm font-medium text-brand-700 hover:underline">Register</button>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden">
+          <div class="h-28 bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
+          <div class="p-5">
+            <p class="text-sm text-slate-500">Sat • 10:00 AM</p>
+            <h3 class="mt-1 font-semibold">CP Practice: Graphs Marathon</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Solve problems together, discuss strategies.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-xs px-2 py-1 rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">Contest Prep</span>
+              <button class="text-sm font-medium text-brand-700 hover:underline">Register</button>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden">
+          <div class="h-28 bg-gradient-to-r from-rose-500 to-orange-500"></div>
+          <div class="p-5">
+            <p class="text-sm text-slate-500">Tue • 3:00 PM</p>
+            <h3 class="mt-1 font-semibold">Design Critique: Landing Pages</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Review & iterate on members' designs.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-xs px-2 py-1 rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">Design</span>
+              <button class="text-sm font-medium text-brand-700 hover:underline">Register</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">Featured Projects</h2>
+        <a href="#" class="hidden sm:inline link-underline">Browse all</a>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project card -->
+        <a href="#" class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow">
+          <div class="h-44 bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <span class="text-sm text-slate-500">Screenshot / Image</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:underline">Campus Navigator (PWA)</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Wayfinding app with offline maps.</p>
+          </div>
+        </a>
+        <a href="#" class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow">
+          <div class="h-44 bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <span class="text-sm text-slate-500">Screenshot / Image</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:underline">OJ Helper — CP Toolkit</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Templates, snippets, test runner.</p>
+          </div>
+        </a>
+        <a href="#" class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow">
+          <div class="h-44 bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <span class="text-sm text-slate-500">Screenshot / Image</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:underline">Delta LMS</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Lightweight learning portal for sessions.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold">Leadership Team</h2>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Member -->
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 text-center">
+          <div class="mx-auto h-20 w-20 rounded-full bg-gradient-to-br from-brand-500 to-indigo-500"></div>
+          <h3 class="mt-3 font-semibold">Arafat Jim</h3>
+          <p class="text-sm text-slate-500">President</p>
+          <div class="mt-3 flex justify-center gap-3 text-slate-500">
+            <a href="#" aria-label="LinkedIn" class="hover:text-brand-600">in</a>
+            <a href="#" aria-label="GitHub" class="hover:text-brand-600">GH</a>
+            <a href="#" aria-label="X" class="hover:text-brand-600">X</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 text-center">
+          <div class="mx-auto h-20 w-20 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500"></div>
+          <h3 class="mt-3 font-semibold">Member Name</h3>
+          <p class="text-sm text-slate-500">General Secretary</p>
+          <div class="mt-3 flex justify-center gap-3 text-slate-500">
+            <a href="#" class="hover:text-brand-600">in</a>
+            <a href="#" class="hover:text-brand-600">GH</a>
+            <a href="#" class="hover:text-brand-600">X</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 text-center">
+          <div class="mx-auto h-20 w-20 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500"></div>
+          <h3 class="mt-3 font-semibold">Member Name</h3>
+          <p class="text-sm text-slate-500">Lead, Web</p>
+          <div class="mt-3 flex justify-center gap-3 text-slate-500">
+            <a href="#" class="hover:text-brand-600">in</a>
+            <a href="#" class="hover:text-brand-600">GH</a>
+            <a href="#" class="hover:text-brand-600">X</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 text-center">
+          <div class="mx-auto h-20 w-20 rounded-full bg-gradient-to-br from-rose-500 to-orange-500"></div>
+          <h3 class="mt-3 font-semibold">Member Name</h3>
+          <p class="text-sm text-slate-500">Lead, CP</p>
+          <div class="mt-3 flex justify-center gap-3 text-slate-500">
+            <a href="#" class="hover:text-brand-600">in</a>
+            <a href="#" class="hover:text-brand-600">GH</a>
+            <a href="#" class="hover:text-brand-600">X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section id="join" class="py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-10 grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">Ready to join Delta IT Club?</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">Fill out the interest form and we’ll get back with onboarding details, schedules, and your first session plan.</p>
+          <ul class="mt-5 grid gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-600"></span> No fees to start</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-600"></span> Beginner‑friendly</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-600"></span> Certificate for active members</li>
+          </ul>
+        </div>
+        <form class="grid gap-4">
+          <div class="grid gap-1">
+            <label class="text-sm text-slate-600 dark:text-slate-300">Full name</label>
+            <input class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="e.g., Arafat Jim" required />
+          </div>
+          <div class="grid gap-1">
+            <label class="text-sm text-slate-600 dark:text-slate-300">Email</label>
+            <input type="email" class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="you@example.com" required />
+          </div>
+          <div class="grid gap-1">
+            <label class="text-sm text-slate-600 dark:text-slate-300">Interest track</label>
+            <select class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              <option>Web Development</option>
+              <option>Competitive Programming</option>
+              <option>UI/UX Design</option>
+              <option>AI / ML</option>
+            </select>
+          </div>
+          <div class="grid gap-1">
+            <label class="text-sm text-slate-600 dark:text-slate-300">Message (optional)</label>
+            <textarea rows="3" class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Tell us about your goals…"></textarea>
+          </div>
+          <button class="mt-2 inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-white shadow hover:bg-brand-700 focus:outline-none focus:shadow-glow" type="button" onclick="alert('Thanks! We\'ll contact you soon.')">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+          <h2 class="text-2xl font-bold">Get in touch</h2>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">Questions, partnerships, or speaking? Drop us a line.</p>
+          <form class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5" placeholder="Name" />
+            <input type="email" class="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5" placeholder="Email" />
+            <input class="sm:col-span-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5" placeholder="Subject" />
+            <textarea rows="4" class="sm:col-span-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5" placeholder="Your message"></textarea>
+            <button type="button" class="sm:col-span-2 inline-flex items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-5 py-3 hover:opacity-90">Send Message</button>
+          </form>
+        </div>
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+          <h3 class="font-semibold">Club Office</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Department Building, Room 302<br/>Your Campus, Rangpur</p>
+          <div class="mt-4 text-sm text-slate-600 dark:text-slate-300">
+            <p><span class="font-medium">Email:</span> hello@deltaitclub.dev</p>
+            <p><span class="font-medium">Phone:</span> +880 1XXX-XXXXXX</p>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <a href="#" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">Facebook</a>
+            <a href="#" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-900">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+        <div>
+          <div class="flex items-center gap-2 font-bold text-lg">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">Δ</span>
+            <span>Delta IT Club</span>
+          </div>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">Empowering students to learn by building — together.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Explore</h4>
+          <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300">
+            <li><a href="#events" class="hover:underline">Events</a></li>
+            <li><a href="#projects" class="hover:underline">Projects</a></li>
+            <li><a href="#team" class="hover:underline">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Resources</h4>
+          <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300">
+            <li><a href="#" class="hover:underline">Docs</a></li>
+            <li><a href="#" class="hover:underline">Code of Conduct</a></li>
+            <li><a href="#" class="hover:underline">Brand Assets</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Newsletter</h4>
+          <form class="mt-3 flex gap-2">
+            <input type="email" placeholder="your@email.com" class="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5" />
+            <button type="button" class="rounded-xl bg-brand-600 px-4 py-2.5 text-white hover:bg-brand-700">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© <span id="year"></span> Delta IT Club. All rights reserved.</p>
+        <a href="#" class="hover:underline">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode toggle with localStorage
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    }
+    themeToggle?.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      const isDark = root.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      sunIcon.classList.toggle('hidden');
+      moonIcon.classList.toggle('hidden');
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
