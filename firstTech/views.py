@@ -141,7 +141,7 @@ def welcomeText(request):
 #                         n2 = int(request.POST.get('num2'))
                 
                 
-#                         finalresult = finalresult + n1 + n2
+#                         finalresult = n1 + n2
 #                         data={
 #                                 'n1':n1,
 #                                 'n2':n2,
@@ -165,31 +165,48 @@ def sumbmitForm(request):
         # For GET requests, render a simple form
         return render(request, 'submitForm.html')
 def calculator(request):
-        return render(request,"calculator.html");
-def calculator2(request):
-        r=0
-        try:
-                if request.method=='POST':
-                        try:
-                                n1 = int(request.POST.get('num1'))
-                                n2 = int(request.POST.get('num2'))
-                                op = request.POST.get('operator')
-                                if op == "+":
-                                        r = n1 + n2
-                                elif op == "-":
-                                        r = n1 - n2
-                                elif op == "*":
-                                        r = n1 * n2
-                                elif op == "/":
-                                        try:
-                                                r = n1 / n2
-                                        except ZeroDivisionError:
-                                                r = "Cannot divide by zero"
+        result = None
+        error = None
+        if request.method == 'POST':
+                try:
+                        n1 = int(request.POST.get('num1', 0))
+                        n2 = int(request.POST.get('num2', 0))
+                        operator = request.POST.get('operator', '+')
+                        if operator == '+':
+                                result = n1 + n2
+                        elif operator == '-':
+                                result = n1 - n2
+                        elif operator == '*':
+                                result = n1 * n2
+                        elif operator == '/':
+                                if n2 == 0:
+                                        error = "Cannot divide by zero"
                                 else:
-                                        r = "Invalid operator"
-                        except (ValueError, TypeError):
-                                r = "Invalid input"
-        except Exception:
-                r = "Invalid input"
-        print(r)
-        return render(request, "calculator2.html", {'result': r})
+                                        result = n1 / n2
+                        else:
+                                error = "Invalid operator"
+                except ValueError:
+                        error = "Invalid input. Please enter numbers only."
+        return render(request, "calculator.html", {'result': result, 'error': error})
+def calculator2(request):
+    r = 0
+    if request.method == 'POST':
+        try:
+            n1 = int(request.POST.get('num1'))
+            n2 = int(request.POST.get('num2'))
+            op = request.POST.get('operator')
+
+            if op == "+":
+                r = n1 + n2
+            elif op == "-":
+                r = n1 - n2
+            elif op == "*":
+                r = n1 * n2
+            elif op == "/":
+                try:
+                    r = n1 / n2
+                except ZeroDivisionError:
+                    r = "Cannot divide by zero"
+        except ValueError:
+            r = "Invalid input"
+    return render(request, "calculator2.html", {'r': r})
