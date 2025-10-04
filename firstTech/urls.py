@@ -41,4 +41,8 @@ urlpatterns = [
 
     path('calculator/',views.calculator, name='calculator'),
     path('calculator2/',views.calculator2, name='calculator2'),
+
+    path('even-odd/',views.evenOdd, name='even-odd'),
+
+    path('marksheet/',views.marksheet, name='marksheet'),
 ] 

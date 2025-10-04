@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marksheet</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 40px;
+    }
+    input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    }
+    .marksheet-container {
+      max-width: 90%;
+      margin: auto;
+      background: #252020;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 25px;
+    }
+
+    form label {
+      font-weight: 600;
+      color: #ffffff;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* Table Styling */
+    .marks-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .marks-table th, .marks-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .marks-table th {
+      background: #04a1b9;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Fix input alignment inside table */
+    .marks-table input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* Submit Button */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      background: #28a745;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: #218838;
+    }
+
+    /* Result Box Styling */
+    .result-box {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f9fcff, #eef6ff);
+      border: 1px solid #cce5ff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .result-box h3 {
+      text-align: center;
+      margin-bottom: 18px;
+      color: #0056b3;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #007bff;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .result-details {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .result-details p {
+      margin: 6px 0;
+    }
+
+    .result-details strong {
+      color: #222;
+    }
+
+    /* Pass/Fail Status Badge */
+    .status {
+      display: inline-block;
+      padding: 6px 12px;
+      font-weight: bold;
+      border-radius: 6px;
+      border: 1px solid transparent;
+    }
+
+    .status.pass {
+      background: #e9f7ef;
+      color: #28a745;
+      border-color: #c3e6cb;
+    }
+
+    .status.fail {
+      background: #f8d7da;
+      color: #dc3545;
+      border-color: #f5c6cb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="marksheet-container">
+  <h2>Student Marksheet</h2>
+
+  <form action="/marksheet/" method="post" name="marksheet">
+    {% csrf_token %}
+
+    <!-- Student Info Table -->
+    <!-- Student Info Table -->
+<table class="marks-table" style="margin-bottom: 25px;">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Roll Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" id="name" name="name" placeholder="Enter student name" required style="width: calc(100% - 50px);"></td>
+      <td><input type="number" id="roll" name="roll" placeholder="Enter roll number" required style="width: calc(100% - 50px);"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+    <!-- Subjects Table -->
+    <table class="marks-table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Max Marks</th>
+          <th>Marks Obtained</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Physics</td>
+          <td>100</td>
+          <td><input type="number" id="physics" name="physics" required></td>
+        </tr>
+        <tr>
+          <td>Chemistry</td>
+          <td>100</td>
+          <td><input type="number" id="chemistry" name="chemistry" required></td>
+        </tr>
+        <tr>
+          <td>Mathematics</td>
+          <td>100</td>
+          <td><input type="number" id="math" name="math" required></td>
+        </tr>
+        <tr>
+          <td>Biology</td>
+          <td>100</td>
+          <td><input type="number" id="biology" name="biology" required></td>
+        </tr>
+        <tr>
+          <td>ICT</td>
+          <td>100</td>
+          <td><input type="number" id="ict" name="ict" required></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit" class="btn-submit">Generate Result</button>
+
+    {% if result %}
+    <div class="result-box">
+      <h3>Result Summary</h3>
+      <div class="result-details">
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Roll:</strong> {{ roll }}</p>
+        <p><strong>Total Marks:</strong> {{ total }}</p>
+        <p><strong>Percentage:</strong> {{ percentage }}%</p>
+        <p><strong>Grade:</strong> {{ grade }}</p>
+        <p><strong>Status:</strong> 
+          <span class="status {% if result == 'Pass' %}pass{% else %}fail{% endif %}">{{ result }}</span>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </form>
+</div>
+
+
+
+</body>
+</html>

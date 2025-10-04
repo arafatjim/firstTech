@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even and Odd</title>
+    <style>
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 400px;
+            background: #04a1b9;
+            padding:10px 20px;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding:10px 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Check Even Odd</h1>
+    <form action="/even-odd/" method="post" name="evenOddForm">
+        {% csrf_token %}
+        <label for="number">Enter a number:</label>
+        <div style="display:flex; gap:10px; align-items: center; text-align: center; margin:10px auto;">
+            <input type="number" id="number" name="number" required style=" flex:1; padding:10px; border:1px solid #ccc; border-radius:4px;">
+            <button type="submit">Check</button>
+        </div>
+        <input type="text" value="{{result}}" readonly style="width:100%; margin-top:10px; padding:10px; background:#f0f0f0; border:none; border-radius:4px; text-align:center; font-weight:bold;">
+    </form>
+</body>
+</html> 

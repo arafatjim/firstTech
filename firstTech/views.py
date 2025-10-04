@@ -1,5 +1,6 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
+from django.template.context_processors import request
 from .forms import UserForm
 def home(request):
         my_course = {
@@ -210,3 +211,89 @@ def calculator2(request):
         except ValueError:
             r = "Invalid input"
     return render(request, "calculator2.html", {'r': r})
+
+# def evenOdd(request):
+#        result = ''
+#        if request.method == 'POST':
+#               try:
+#                      num =  int(request.POST.get('number', 0))
+#                      if num % 2 == 0:
+#                             result = f"{num} is an Even number."
+#                      else:
+#                             result = f"{num} is an Odd number."
+#               except ValueError:
+#                      result = "Invalid input. Please enter a valid integer."
+#        return render(request, "evenOdd.html", {'result': result})
+# from django.views.decorators.csrf import csrf_exempt
+
+def evenOdd(request):
+        result = ''
+        if request.method == 'POST':
+            try:
+                num = int(request.POST.get('number', 0))
+                if num % 2 == 0:
+                    result = f"{num} is an Even number."
+                    
+                else:
+                    result = f"{num} is an Odd number."
+            except (ValueError, TypeError):
+                result = "Invalid input. Please enter a valid integer."
+                     
+        return render(request, "evenOdd.html", {'result': result})
+from django.views.decorators.csrf import csrf_exempt
+
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def marksheet(request):
+    context = {}
+    if request.method == 'POST':
+        try:
+            name = request.POST.get('name', '')
+            roll = request.POST.get('roll', '')
+
+            # Fetch marks
+            subject1 = int(request.POST.get('physics', 0))
+            subject2 = int(request.POST.get('chemistry', 0))
+            subject3 = int(request.POST.get('math', 0))
+            subject4 = int(request.POST.get('biology', 0))
+            subject5 = int(request.POST.get('ict', 0))
+
+            # Calculate total & percentage
+            total_marks = subject1 + subject2 + subject3 + subject4 + subject5
+            percentage = (total_marks / 500) * 100
+
+            # Determine grade
+            if percentage >= 90:
+                grade = 'A+'
+            elif percentage >= 80:
+                grade = 'A'
+            elif percentage >= 70:
+                grade = 'B+'
+            elif percentage >= 60:
+                grade = 'B'
+            elif percentage >= 50:
+                grade = 'C'
+            else:
+                grade = 'F'
+
+            # Determine pass/fail status
+            status = "Pass" if grade != 'F' else "Fail"
+
+            # Send context to template
+            context = {
+                'name': name,
+                'roll': roll,
+                'total': total_marks,
+                'percentage': f"{percentage:.2f}",
+                'grade': grade,
+                'result': status
+            }
+
+        except ValueError:
+            context = {
+                'error': "Invalid input. Please enter valid integers for marks."
+            }
+
+    return render(request, "marksheet.html", context)
