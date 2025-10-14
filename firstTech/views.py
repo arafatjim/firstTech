@@ -2,7 +2,17 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.template.context_processors import request
 from .forms import UserForm
+from service.models import Features
 def home(request):
+        featuresData = Features.objects.all()
+        for a in featuresData:
+            print(a.Features_name)
+            print(a.Features_price)
+            print(a.Features_desc)
+            print(a.Features_img) 
+        print(featuresData)
+              
+        
         my_course = {
         'id': 1,
         'name': 'Web Development',
@@ -56,6 +66,7 @@ def featuredProducts(request):
 
 def contactUs(request):
         return render(request,"contact.html")
+
 def events(request):
           return HttpResponse("<h2>Events</h2>"+"<p><b>Event 1:</b></p>"+"<ul><li>Item 1.Home</li><li>Item 2.Country</li></ul>")
 def gallery(request):
@@ -297,3 +308,7 @@ def marksheet(request):
             }
 
     return render(request, "marksheet.html", context)
+
+
+def contactUs(request):
+        return render(request,"media2.html")

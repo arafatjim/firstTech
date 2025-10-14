@@ -45,4 +45,6 @@ urlpatterns = [
     path('even-odd/',views.evenOdd, name='even-odd'),
 
     path('marksheet/',views.marksheet, name='marksheet'),
+
+    path('media2/',views.marksheet, name='media2'),
 ] 

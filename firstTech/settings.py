@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'service',
     'category',
     'UpcommintEvents',
+    'leaderboard',
+    'featureprojects',
 ]
 
 MIDDLEWARE = [
